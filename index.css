@@ -1,0 +1,159 @@
+html {
+    background-color: #fff;
+}
+
+body {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    width: 650px;
+    height: 710px;
+    margin: 10px auto;
+    padding: 15px 35px 45px 35px;
+    border: solid royalblue 15px;
+    box-shadow: -2px 6px 18px 3px rgba(0,0,0,0.75);
+    color: #2a9d8f;
+    background-color: #ffd6a5;
+    
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    margin: 0;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px; 
+}
+
+/*********************** 
+   Button Styling 
+************************/
+
+button {
+    padding: 15px 65px;
+    margin: 0 auto 10px;
+    background: #457b9d;
+    color: #f7ede2;
+    cursor: pointer; 
+    border: none;
+}
+
+#start {
+    background: #457b9d;
+}
+
+#pause {
+    background: #f07167;
+    display: none;
+}
+
+button:hover {
+    background: #e76f51;
+}
+
+/*********************** 
+   playground styling 
+************************/
+
+.overlay {
+    width: 350px;
+    height: 150px;
+    margin: auto;
+    border: solid 5px #fff;
+}
+
+.overlay h1{
+    margin-top: 55px;
+}
+
+.loser {
+   background: red;
+   color: white; 
+}
+
+.winner {
+    background: green;
+    color: white;
+}
+
+/*********************** 
+   playground styling 
+************************/
+
+.playground {
+    margin: 0 auto;
+    width: 560px;
+    height: 560px;
+    border: solid 10px #7f7f7f;
+    background: #fff;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.playground div {
+    width: 20px;
+    height: 20px;
+    /* background: lightgray; */
+}
+
+/*********************** 
+    pattern styling 
+************************/
+
+.wall {
+    background-color: lightgray;
+} 
+
+.pac_dot {
+    background-color: darkblue;
+    border: 7px solid white;
+    box-sizing: border-box;
+} 
+
+.power_pellet {
+    /* background-color: green;
+    border-radius: 50%; */
+}
+
+.ghost_lair_gate {
+    border-top: solid 4px #2a9d8f;
+    box-sizing: border-box;
+}
+
+.unaccessable {
+    background: #fff;
+}
+
+/*********************** 
+   Characters styling 
+************************/
+
+.pacman {
+    /* background-color: yellow;
+    border-radius: 50%; */
+} 
+
+.blinky {
+    background-color: red;
+    border: none;
+}
+
+.pinky {
+    background-color: pink;
+    border: none;
+}
+
+.inky {
+    background-color: blue;
+    border: none;
+}
+
+.clyde {
+    background-color: orange;
+    border: none;
+}
