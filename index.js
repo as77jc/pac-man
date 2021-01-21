@@ -57,7 +57,7 @@ function levelCreator (level, arr){
         if (level[i] === 2 || level[i] === 5) playgroundDivs[i].classList.add('ghost_lair');
         if (level[i] === 3 ) {
             playgroundDivs[i].classList.add('power_pellet');
-            playgroundDivs[i].innerHTML = '<img src="/images/ice.png" alt="ice">'
+            playgroundDivs[i].innerHTML = '<img src="./images/ice.png" alt="ice">'
         }
         if (level[i] === 4 ) arr.push(i);   /// made array that possible place for pacman 
         if (level[i] === 5 ) playgroundDivs[i].classList.add('ghost_lair_gate');
@@ -74,7 +74,7 @@ function choosePacManPosition () {
     let rndIndex = Math.floor( Math.random() * maxRnd )
     let pacman = possiblePacManPosition[rndIndex]
     
-    playgroundDivs[pacman].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`
+    playgroundDivs[pacman].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`
     return pacman;
     playgroundDivs[pacman].classList.add('pacman')
 }
@@ -141,7 +141,7 @@ function movmentControl (e) {
     eatPowerPellet()
 
     playgroundDivs[currentPacManPosition].classList.add('pacman')
-    playgroundDivs[currentPacManPosition].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;
+    playgroundDivs[currentPacManPosition].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`;
       
 }
 
@@ -236,7 +236,7 @@ const ghosts = [
 ];
 
 ghosts.forEach(ghost => {
-    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`
+    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`
     playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost')
 });
 
@@ -262,7 +262,7 @@ function movingGhost (ghost) {
                     ghost.pacDot = false;
                 }
                 if (playgroundDivs[ghost.ghostCurrentPosition].classList.contains('power_pellet')){
-                    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = '<img src="/images/ice.png" alt="ice">'
+                    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = '<img src="./images/ice.png" alt="ice">'
                 }
                 
                 ghost.ghostCurrentPosition += direction
@@ -274,10 +274,10 @@ function movingGhost (ghost) {
                     ghost.pacDot = true;
                 }
                 playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost')
-                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
+                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
         } else direction = movingPossible[Math.floor(Math.random() * movingPossible.length)]
         
-        if (ghost.isScared) playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/scared.png" alt="scared">`
+        if (ghost.isScared) playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/scared.png" alt="scared">`
         
         ////  check the scarde ghost to eat
         if (playgroundDivs[ghost.ghostCurrentPosition].classList.contains('pacman')  
@@ -292,9 +292,9 @@ function movingGhost (ghost) {
                 playgroundDivs[ghost.ghostCurrentPosition].innerHTML = ''
                 ghost.ghostCurrentPosition = ghost.ghostStartPosition
                 playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost')
-                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`
+                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`
                 
-                playgroundDivs[currentPacManPosition].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;                
+                playgroundDivs[currentPacManPosition].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`;                
         }
         
         checkGameOver ()
