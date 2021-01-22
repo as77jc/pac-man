@@ -23,25 +23,27 @@ let rudl = 'R';
 /// import levels layout from pattern.js
 ////////////////////////////////////////////////////////////////////
 
-import { level } from './pattern.js'
-let layoutLevel = level[0]
+import { level } from './pattern.js';
 
-let playground = document.querySelector('.playground')
-let score = document.getElementById('score')
+
+let layoutLevel = level[0];
+
+let playground = document.querySelector('.playground');
+let score = document.getElementById('score');
 let scoreValue = 0;
 
-let startBtn = document.getElementById('start')
-let pauseBtn = document.getElementById('pause')
+let startBtn = document.getElementById('start');
+let pauseBtn = document.getElementById('pause');
 
 ////////////////////////////////////////////////////////////////////
 /// create playground dives
 ////////////////////////////////////////////////////////////////////
 
-function createDiv (level) {
+function createDiv () {
     for (let i = 0; i < (widthBlocks * lengthBlock); i++){
-        playgroundDivs[i] = document.createElement('div')
+        playgroundDivs[i] = document.createElement('div');
         //playgroundDivs[i].classList.add('playground_blocks')
-        playground.appendChild(playgroundDivs[i])
+        playground.appendChild(playgroundDivs[i]);
     }
 }
 
@@ -57,7 +59,7 @@ function levelCreator (level, arr){
         if (level[i] === 2 || level[i] === 5) playgroundDivs[i].classList.add('ghost_lair');
         if (level[i] === 3 ) {
             playgroundDivs[i].classList.add('power_pellet');
-            playgroundDivs[i].innerHTML = '<img src="./images/ice.png" alt="ice">'
+            playgroundDivs[i].innerHTML = '<img src="/images/ice.png" alt="ice">';
         }
         if (level[i] === 4 ) arr.push(i);   /// made array that possible place for pacman 
         if (level[i] === 5 ) playgroundDivs[i].classList.add('ghost_lair_gate');
@@ -70,13 +72,13 @@ function levelCreator (level, arr){
 ////////////////////////////////////////////////////////////////////
 
 function choosePacManPosition () {
-    let maxRnd = possiblePacManPosition.length
-    let rndIndex = Math.floor( Math.random() * maxRnd )
-    let pacman = possiblePacManPosition[rndIndex]
+    let maxRnd = possiblePacManPosition.length;
+    let rndIndex = Math.floor( Math.random() * maxRnd );
+    let pacman = possiblePacManPosition[rndIndex];
     
-    playgroundDivs[pacman].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`
+    playgroundDivs[pacman].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;
     return pacman;
-    playgroundDivs[pacman].classList.add('pacman')
+    playgroundDivs[pacman].classList.add('pacman');
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -85,16 +87,16 @@ function choosePacManPosition () {
 
 function movmentControl (e) {
     
-    playgroundDivs[currentPacManPosition].innerHTML = ''
-    playgroundDivs[currentPacManPosition].classList.remove('pacman')
+    playgroundDivs[currentPacManPosition].innerHTML = '';
+    playgroundDivs[currentPacManPosition].classList.remove('pacman');
     
-    checkWinGame ()
+    checkWinGame ();
     
     switch (e.keyCode) {
         /// left key
         case 37:
             if (currentPacManPosition === breakPointLeft) {
-                    currentPacManPosition = breakPointRight
+                    currentPacManPosition = breakPointRight;
                     rudl = 'L';
                     break;
             }
@@ -116,7 +118,7 @@ function movmentControl (e) {
         /// right key
         case 39:
             if (currentPacManPosition === breakPointRight) {
-                    currentPacManPosition = breakPointLeft
+                    currentPacManPosition = breakPointLeft;
                     rudl = 'R';
                     break;
             }
@@ -137,11 +139,11 @@ function movmentControl (e) {
             break;
     }
 
-    eatPacDot()
-    eatPowerPellet()
+    eatPacDot();
+    eatPowerPellet();
 
-    playgroundDivs[currentPacManPosition].classList.add('pacman')
-    playgroundDivs[currentPacManPosition].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`;
+    playgroundDivs[currentPacManPosition].classList.add('pacman');
+    playgroundDivs[currentPacManPosition].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;
       
 }
 
@@ -175,15 +177,15 @@ function eatPacDot () {
 
 function eatPowerPellet () {
     if (playgroundDivs[currentPacManPosition].classList.contains('power_pellet')) {
-        playgroundDivs[currentPacManPosition].classList.remove('power_pellet')
-        playgroundDivs[currentPacManPosition].innerHTML = ''
+        playgroundDivs[currentPacManPosition].classList.remove('power_pellet');
+        playgroundDivs[currentPacManPosition].innerHTML = '';
         
         scoreValue += 10;
         score.textContent = scoreValue;
         
-        ghosts.forEach(ghost => ghost.isScared = true )
+        ghosts.forEach(ghost => ghost.isScared = true );
         
-        setTimeout(unScaredGhost, 10000)
+        setTimeout(unScaredGhost, 10000);
     }
 }
 
@@ -192,7 +194,7 @@ function eatPowerPellet () {
 ////////////////////////////////////////////////////////////////////
 
 function unScaredGhost () {
-    ghosts.forEach(ghost => ghost.isScared = false )
+    ghosts.forEach(ghost => ghost.isScared = false );
 }
 
 
@@ -206,9 +208,9 @@ function unScaredGhost () {
 ////////////////////////////////////////////////////////////////////
 
 
-createDiv()
-levelCreator(layoutLevel, possiblePacManPosition)
-let currentPacManPosition = choosePacManPosition()
+createDiv();
+levelCreator(layoutLevel, possiblePacManPosition);
+let currentPacManPosition = choosePacManPosition();
 
 
 
@@ -222,7 +224,7 @@ class Ghost {
         this.ghostStartPosition = ghostStartPosition
         this.ghostSpeed = ghostSpeed
         this.ghostCurrentPosition = ghostStartPosition
-        this.isScared = false
+        this.isScared = false   /// <----------------------------------
         this.timerId = NaN
         this.pacDot = false
     }
@@ -236,8 +238,8 @@ const ghosts = [
 ];
 
 ghosts.forEach(ghost => {
-    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`
-    playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost')
+    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
+    playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost');
 });
 
 ////////////////////////////////////////////////////////////////////
@@ -245,8 +247,8 @@ ghosts.forEach(ghost => {
 ////////////////////////////////////////////////////////////////////
 
 function movingGhost (ghost) {
-    let movingPossible = [1, -1, widthBlocks, -widthBlocks]
-    let direction = movingPossible[Math.floor(Math.random() * movingPossible.length)]
+    let movingPossible = [1, -1, widthBlocks, -widthBlocks];
+    let direction = movingPossible[Math.floor(Math.random() * movingPossible.length)];
     
     ghost.timerId = setInterval(function() {
         ////// check the walls and other ghost for moving ghost
@@ -254,18 +256,18 @@ function movingGhost (ghost) {
             !playgroundDivs[ghost.ghostCurrentPosition + direction].classList.contains('wall') &&
             !playgroundDivs[ghost.ghostCurrentPosition + direction].classList.contains('ghost') 
             ) {
-                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = ''
-                playgroundDivs[ghost.ghostCurrentPosition].classList.remove('ghost')
+                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = '';
+                playgroundDivs[ghost.ghostCurrentPosition].classList.remove('ghost');
                 ////// check pacdat
                 if (ghost.pacDot) {
                     playgroundDivs[ghost.ghostCurrentPosition].classList.add('pac_dot');
                     ghost.pacDot = false;
                 }
                 if (playgroundDivs[ghost.ghostCurrentPosition].classList.contains('power_pellet')){
-                    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = '<img src="./images/ice.png" alt="ice">'
+                    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = '<img src="/images/ice.png" alt="ice">';
                 }
                 
-                ghost.ghostCurrentPosition += direction
+                ghost.ghostCurrentPosition += direction;
                 
                 if (
                     playgroundDivs[ghost.ghostCurrentPosition].classList.contains('pac_dot')
@@ -273,33 +275,53 @@ function movingGhost (ghost) {
                     playgroundDivs[ghost.ghostCurrentPosition].classList.remove('pac_dot');
                     ghost.pacDot = true;
                 }
-                playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost')
-                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
-        } else direction = movingPossible[Math.floor(Math.random() * movingPossible.length)]
+                playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost');
+                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
+        } else direction = movingPossible[Math.floor(Math.random() * movingPossible.length)];
         
-        if (ghost.isScared) playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/scared.png" alt="scared">`
+        if (ghost.isScared) playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/scared.png" alt="scared">`;
         
+        
+        
+        let gostIndex = 0;
         ////  check the scarde ghost to eat
-        if (playgroundDivs[ghost.ghostCurrentPosition].classList.contains('pacman')  
-             &&
-            ghost.isScared
+        if ((
+            playgroundDivs[ghosts[0].ghostCurrentPosition].classList.contains('pacman') ||
+            playgroundDivs[ghosts[1].ghostCurrentPosition].classList.contains('pacman') ||
+            playgroundDivs[ghosts[2].ghostCurrentPosition].classList.contains('pacman') ||
+            playgroundDivs[ghosts[3].ghostCurrentPosition].classList.contains('pacman') )
+                &&
+            ghosts[0].isScared
             ) {
                 scoreValue += 100;
                 score.textContent = scoreValue;
                 
-                ghost.pacDot = false;
-                playgroundDivs[ghost.ghostCurrentPosition].classList.remove('ghost')
-                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = ''
-                ghost.ghostCurrentPosition = ghost.ghostStartPosition
-                playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost')
-                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`
+                if (ghosts[0].ghostCurrentPosition == currentPacManPosition) gostIndex = 0;
+                if (ghosts[1].ghostCurrentPosition == currentPacManPosition) gostIndex = 1;
+                if (ghosts[2].ghostCurrentPosition == currentPacManPosition) gostIndex = 2;
+                if (ghosts[3].ghostCurrentPosition == currentPacManPosition) gostIndex = 3;
                 
-                playgroundDivs[currentPacManPosition].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`;                
+                //console.log(gostIndex)
+                
+                ghost.pacDot = false;
+                playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].classList.remove('ghost');
+                playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].innerHTML = '';
+                ghosts[gostIndex].ghostCurrentPosition = ghosts[gostIndex].ghostStartPosition;
+                playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].classList.add('ghost');
+                playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
+                
+                playgroundDivs[currentPacManPosition].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;                
         }
         
-        checkGameOver ()
         
-    }, ghost.ghostSpeed)
+        
+        
+        
+        
+        checkGameOver ();
+        
+        
+    }, ghost.ghostSpeed);
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -312,10 +334,10 @@ function checkGameOver () {
         !ghosts[0].isScared
         ){
             ghosts.forEach(ghost => clearInterval(ghost.timerId));
-            document.removeEventListener('keydown', movmentControl)
+            document.removeEventListener('keydown', movmentControl);
             
-            score.style.color = '#ff0000'
-            overLayer('loser', '😈 You are a LOSER 😈')  
+            score.style.color = '#ff0000';
+            overLayer('loser', '😈 You are a LOSER 😈');
         }
 }
 
@@ -323,9 +345,9 @@ function checkWinGame () {
     if (scoreValue >= 270) {
         
         ghosts.forEach(ghost => clearInterval(ghost.timerId));
-        document.removeEventListener('keydown', movmentControl)
+        document.removeEventListener('keydown', movmentControl);
             
-        overLayer('winner', '🥳 WooW You Win 🥳') 
+        overLayer('winner', '🥳 WooW You Win 🥳');
     }
 }
 
@@ -339,24 +361,24 @@ function overLayer (style, message) {
     overlay.style.display = 'flex';
     overlay.style.height = '100vh';
     overlay.style.position = 'fixed';
-    overlay.style.top = '0'
-    overlay.style.bottom = '0'
-    overlay.style.left = '0'
-    overlay.style.right = '0'
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, .8)'
+    overlay.style.top = '0';
+    overlay.style.bottom = '0';
+    overlay.style.left = '0';
+    overlay.style.right = '0';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, .8)';
     
     overlay.innerHTML = `
         <section class='overlay ${style}'>
             <h1>${message}</h1>
         </section>
-    `
+    `;
     
     overlay.addEventListener('click', event => {
         //if (event.currentTarget !== event.target) return
-        document.location.reload()
+        document.location.reload();
     })
     
-    document.body.appendChild(overlay)
+    document.body.appendChild(overlay);
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -367,8 +389,8 @@ function startButton () {
     startBtn.style.display = 'none';
     pauseBtn.style.display = 'block';
     
-    document.addEventListener('keydown', movmentControl)
-    ghosts.forEach(ghost => movingGhost(ghost))
+    document.addEventListener('keydown', movmentControl);
+    ghosts.forEach(ghost => movingGhost(ghost));
 }
 
 function pauseButton () {
@@ -376,10 +398,10 @@ function pauseButton () {
     startBtn.style.display = 'block';
     
     ghosts.forEach(ghost => clearInterval(ghost.timerId));
-    document.removeEventListener('keydown', movmentControl)
+    document.removeEventListener('keydown', movmentControl);
 }
 
 
 
-startBtn.addEventListener('click', startButton)
-pauseBtn.addEventListener('click', pauseButton)
+startBtn.addEventListener('click', startButton);
+pauseBtn.addEventListener('click', pauseButton);
