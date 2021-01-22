@@ -59,7 +59,7 @@ function levelCreator (level, arr){
         if (level[i] === 2 || level[i] === 5) playgroundDivs[i].classList.add('ghost_lair');
         if (level[i] === 3 ) {
             playgroundDivs[i].classList.add('power_pellet');
-            playgroundDivs[i].innerHTML = '<img src="/images/ice.png" alt="ice">';
+            playgroundDivs[i].innerHTML = '<img src="./images/ice.png" alt="ice">';
         }
         if (level[i] === 4 ) arr.push(i);   /// made array that possible place for pacman 
         if (level[i] === 5 ) playgroundDivs[i].classList.add('ghost_lair_gate');
