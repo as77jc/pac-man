@@ -76,7 +76,7 @@ function choosePacManPosition () {
     let rndIndex = Math.floor( Math.random() * maxRnd );
     let pacman = possiblePacManPosition[rndIndex];
     
-    playgroundDivs[pacman].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;
+    playgroundDivs[pacman].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`;
     return pacman;
     playgroundDivs[pacman].classList.add('pacman');
 }
@@ -143,7 +143,7 @@ function movmentControl (e) {
     eatPowerPellet();
 
     playgroundDivs[currentPacManPosition].classList.add('pacman');
-    playgroundDivs[currentPacManPosition].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;
+    playgroundDivs[currentPacManPosition].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`;
       
 }
 
@@ -238,7 +238,7 @@ const ghosts = [
 ];
 
 ghosts.forEach(ghost => {
-    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
+    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
     playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost');
 });
 
@@ -264,7 +264,7 @@ function movingGhost (ghost) {
                     ghost.pacDot = false;
                 }
                 if (playgroundDivs[ghost.ghostCurrentPosition].classList.contains('power_pellet')){
-                    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = '<img src="/images/ice.png" alt="ice">';
+                    playgroundDivs[ghost.ghostCurrentPosition].innerHTML = '<img src="./images/ice.png" alt="ice">';
                 }
                 
                 ghost.ghostCurrentPosition += direction;
@@ -276,10 +276,10 @@ function movingGhost (ghost) {
                     ghost.pacDot = true;
                 }
                 playgroundDivs[ghost.ghostCurrentPosition].classList.add('ghost');
-                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
+                playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
         } else direction = movingPossible[Math.floor(Math.random() * movingPossible.length)];
         
-        if (ghost.isScared) playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="/images/scared.png" alt="scared">`;
+        if (ghost.isScared) playgroundDivs[ghost.ghostCurrentPosition].innerHTML = `<img src="./images/scared.png" alt="scared">`;
         
         
         
@@ -308,9 +308,9 @@ function movingGhost (ghost) {
                 playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].innerHTML = '';
                 ghosts[gostIndex].ghostCurrentPosition = ghosts[gostIndex].ghostStartPosition;
                 playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].classList.add('ghost');
-                playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].innerHTML = `<img src="/images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
+                playgroundDivs[ghosts[gostIndex].ghostCurrentPosition].innerHTML = `<img src="./images/${ghost.ghostName}.png" alt="${ghost.ghostName}">`;
                 
-                playgroundDivs[currentPacManPosition].innerHTML = `<img src="/images/pacman${rudl}.png" alt="pac-man">`;                
+                playgroundDivs[currentPacManPosition].innerHTML = `<img src="./images/pacman${rudl}.png" alt="pac-man">`;                
         }
         
         
